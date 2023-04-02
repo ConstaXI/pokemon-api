@@ -7,8 +7,9 @@ export const validPokemonTypes: PokemonTypes[] = [
 ];
 
 export type Pokemon = {
-  id: number;
   tipo: PokemonTypes;
   treinador: string;
   nivel: number;
 };
+
+export type PokemonWithId = Pokemon & { id: number };

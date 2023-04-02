@@ -7,6 +7,7 @@ import {
 import { Pokemon, validPokemonTypes } from '../../../domain/entities/pokemon';
 import { Interactor } from '../../../domain/protocols/interactor';
 import { Result, ok, fail } from '../../../domain/protocols/result';
+import { InputCreatePokemon } from '../../dto/pokemon';
 
 @injectable()
 export default class CreatePokemonInteractor
@@ -17,12 +18,19 @@ export default class CreatePokemonInteractor
     private readonly pokemonRepository: PokemonRepository,
   ) {}
 
-  async execute(pokemon: Pokemon): Promise<Result<Pokemon, InvalidPokemon>> {
+  async execute(
+    pokemon: InputCreatePokemon,
+  ): Promise<Result<Pokemon, InvalidPokemon>> {
     if (validPokemonTypes.includes(pokemon.tipo) === false) {
       return fail(new InvalidPokemon());
     }
 
-    const result = await this.pokemonRepository.save(pokemon);
+    const entity: Pokemon = {
+      ...pokemon,
+      nivel: 1,
+    };
+
+    const result = await this.pokemonRepository.save(entity);
 
     return ok(result);
   }

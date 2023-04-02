@@ -1,8 +1,12 @@
-import { Pokemon } from '../../../domain/entities/pokemon';
+import { Pokemon, PokemonWithId } from '../../../domain/entities/pokemon';
 
 export const PokemonRepositorySymbol = Symbol('PokemonRepository');
 
 export interface PokemonRepository {
-  save(pokemon: Pokemon): Promise<Pokemon>;
-  findOne(key: keyof Pokemon, value: Pokemon[keyof Pokemon]): Promise<Pokemon>;
+  save(pokemon: Pokemon): Promise<PokemonWithId>;
+  findOne(
+    key: keyof PokemonWithId,
+    value: PokemonWithId[keyof PokemonWithId],
+  ): Promise<PokemonWithId | undefined>;
+  delete(id: PokemonWithId['id']): Promise<void>;
 }
