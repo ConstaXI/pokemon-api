@@ -26,7 +26,9 @@
     "sonarjs"
   ],
   "rules": {
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "class-methods-use-this": "off",
+    "no-useless-constructor": "off"
   },
   "settings": {
     "import/resolver": {

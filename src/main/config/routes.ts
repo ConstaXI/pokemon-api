@@ -1,19 +1,18 @@
 import { Express, Router } from 'express';
 import { readdirSync } from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 
 export default async (app: Express): Promise<void> => {
   const router = Router();
   app.use(router);
-  const promises = readdirSync(
-    `${path.dirname(fileURLToPath(import.meta.url))}/../routes`,
-  ).map(async file => {
-    const imported = await import(`../routes/${file}`);
+  // eslint-disable-next-line unicorn/prefer-module
+  const files = readdirSync(`${__dirname}/routes`);
 
-    const { default: route } = imported;
+  const promises = files.map(async file => {
+    if (!file.endsWith('.map')) {
+      const { default: route } = await import(`./routes/${file}`);
 
-    route(router);
+      route(router);
+    }
   });
 
   await Promise.all(promises);

@@ -1,5 +1,7 @@
-import environment from './config/environment';
+import 'module-alias/register';
 import app from './config/app';
+import './ioc/load';
+import environment from './config/environment';
 
 try {
   app.listen(environment.PORT, () =>
