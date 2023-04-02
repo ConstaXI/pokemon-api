@@ -1,4 +1,4 @@
-import { Pokemon } from 'src/domain/entities/pokemon';
+import { Pokemon } from '../../../domain/entities/pokemon';
 
 export const PokemonRepositorySymbol = Symbol('PokemonRepository');
 

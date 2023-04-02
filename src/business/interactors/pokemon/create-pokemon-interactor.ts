@@ -1,13 +1,14 @@
-import InvalidPokemon from '@business/errors/invalid-pokemon';
+import { inject, injectable } from 'inversify';
+import InvalidPokemon from '../../errors/invalid-pokemon';
 import {
   PokemonRepository,
   PokemonRepositorySymbol,
-} from '@business/protocols';
-import { Pokemon, Result, ok, validPokemonTypes, Interactor } from '@domain';
-import { inject, injectable } from 'inversify';
+} from '../../protocols/repositories/pokemon-repository';
+import { Pokemon, validPokemonTypes } from '../../../domain/entities/pokemon';
+import { Interactor } from '../../../domain/protocols/interactor';
+import { Result, ok, fail } from '../../../domain/protocols/result';
 
 @injectable()
-// eslint-disable-next-line import/prefer-default-export
 export default class CreatePokemonInteractor
   implements Interactor<Pokemon, InvalidPokemon>
 {

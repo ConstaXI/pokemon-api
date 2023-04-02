@@ -1,6 +1,8 @@
-import { PokemonRepository } from 'src/business/protocols/repositories/pokemon-repository';
-import { Pokemon } from 'src/domain/entities/pokemon';
+import { injectable } from 'inversify';
+import { PokemonRepository } from '../../../src/business/protocols/repositories/pokemon-repository';
+import { Pokemon } from '../../../src/domain/entities/pokemon';
 
+@injectable()
 export default class FakePokemonRepository implements PokemonRepository {
   async save(pokemon: Pokemon): Promise<Pokemon> {
     return pokemon;

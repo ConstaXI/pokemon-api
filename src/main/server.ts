@@ -1,4 +1,4 @@
-import 'module-alias/register';
+import 'reflect-metadata';
 import app from './config/app';
 import './ioc/load';
 import environment from './config/environment';

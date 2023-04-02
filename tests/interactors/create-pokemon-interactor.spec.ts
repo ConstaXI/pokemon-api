@@ -1,12 +1,12 @@
-import InvalidPokemon from 'src/business/errors/invalid-pokemon';
-import CreatePokemonInteractor from 'src/business/interactors/pokemon/create-pokemon-interactor';
-import { PokemonRepositorySymbol } from 'src/business/protocols/repositories/pokemon-repository';
-import { PokemonTypes } from 'src/domain/entities/pokemon';
-import container from 'src/main/ioc/container';
-import makeFakePokemon from 'tests/fakes/entities/pokemon';
+import InvalidPokemon from '../../src/business/errors/invalid-pokemon';
+import CreatePokemonInteractor from '../../src/business/interactors/pokemon/create-pokemon-interactor';
+import { PokemonRepositorySymbol } from '../../src/business/protocols/repositories/pokemon-repository';
+import { PokemonTypes } from '../../src/domain/entities/pokemon';
+import container from '../../src/main/ioc/container';
+import makeFakePokemon from '../fakes/entities/pokemon';
 import FakePokemonRepository, {
   fakePokemonRepositorySave,
-} from 'tests/fakes/repositories/pokemon-repository';
+} from '../fakes/repositories/pokemon-repository';
 
 describe('CreatePokemonInteractor', () => {
   let interactor: CreatePokemonInteractor;
@@ -14,6 +14,14 @@ describe('CreatePokemonInteractor', () => {
   beforeAll(() => {
     container.bind(PokemonRepositorySymbol).to(FakePokemonRepository);
     container.bind(CreatePokemonInteractor).toSelf();
+  });
+
+  beforeEach(() => {
+    interactor = container.get(CreatePokemonInteractor);
+  });
+
+  afterAll(() => {
+    container.unbindAll();
   });
 
   test('should call repository with nivel 1', async () => {

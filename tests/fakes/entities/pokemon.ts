@@ -1,4 +1,4 @@
-import { Pokemon } from 'src/domain/entities/pokemon';
+import { Pokemon } from '../../../src/domain/entities/pokemon';
 
 export default function makeFakePokemon(
   properties?: Partial<Pokemon>,

@@ -1,4 +1,4 @@
-import HttpError from '@/domain/protocols/http-error';
+import HttpError from '../../domain/protocols/http-error';
 
 export default class InvalidPokemon extends HttpError {
   constructor() {

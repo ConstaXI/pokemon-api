@@ -8,14 +8,9 @@
     "allowJs": false,
     "importHelpers": true,
     "outDir": "build",
-    "rootDir": ".",
     "moduleResolution": "node",
     "types": [
       "jest"
-    ],
-    "typeRoots": [
-      "./node_modules/@types",
-      "./src/@types"
     ],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -24,24 +19,11 @@
     "skipLibCheck": true,
     "strictPropertyInitialization": false,
     "emitDecoratorMetadata": true,
-    "sourceMap": true,
-    "baseUrl": ".",
-    "rootDirs": [
-      "src",
-      "test"
-    ],
-    "paths": {
-      "@*": [
-        "src/*"
-      ],
-      "tests/*": [
-        "tests/*"
-      ]
-    }
+    "sourceMap": true  
   },
   "include": [
     "src",
-    "test"
+    "tests"
   ],
   "exclude": [
     "./*.js"
