@@ -5,8 +5,8 @@
   "main": "build/main/server.js",
   "type": "module",
   "scripts": {
-    "migrations:run": "typeorm-ts-node-esm migration:run -- -d ./src/infra/database/datasource.ts",
-    "dev": "node --inspect build/main/server.js",
+    "migrations:run": "typeorm-ts-node-esm migration:run -d ./src/infra/database/datasource.ts",
+    "start": "ts-node-esm -r tsconfig-paths/register src/main/server.ts",
     "build": "tsc -p ./tsconfig.build.json && tsc-alias -p ./tsconfig.build.json",
     "test": "jest --runInBand --silent --detectOpenHandles",
     "test:verbose": "jest --runInBand",
@@ -45,7 +45,8 @@
     "prettier": "^2.8.3",
     "ts-jest": "^29.1.0",
     "ts-node-dev": "^2.0.0",
-    "tsc-watch": "^6.0.0"
+    "tsc-watch": "^6.0.0",
+    "tsconfig-paths": "^4.2.0"
   },
   "keywords": [],
   "author": "",

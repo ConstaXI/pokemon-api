@@ -1,5 +1,5 @@
-import postgresDataSource from '../infra/database/datasource';
 import app from './config/app';
+import postgresDataSource from '../infra/database/datasource';
 import environment from './config/environment';
 
 try {

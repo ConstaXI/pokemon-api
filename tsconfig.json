@@ -21,6 +21,10 @@
     "emitDecoratorMetadata": true,
     "sourceMap": true  
   },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
   "tsc-alias": {
     "resolveFullPaths": true,
   },
