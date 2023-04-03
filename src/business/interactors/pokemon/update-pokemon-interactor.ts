@@ -1,5 +1,5 @@
 import { inject, injectable } from 'inversify';
-import { Pokemon, PokemonWithId } from '../../../domain/entities/pokemon';
+import { PokemonWithId } from '../../../domain/entities/pokemon';
 import { Interactor } from '../../../domain/protocols/interactor';
 import { Result, ok } from '../../../domain/protocols/result';
 import CannotUpdateFields from '../../errors/cannot-update-field';

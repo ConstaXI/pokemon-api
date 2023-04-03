@@ -1,8 +1,8 @@
 import { inject, injectable } from 'inversify';
-import Controller from '../../main/protocols/controller';
+import Controller from '../protocols/controller';
 import { PokemonWithId } from '../../domain/entities/pokemon';
 import { Result, fail } from '../../domain/protocols/result';
-import { HttpResponse } from '../../main/protocols/http-response';
+import { HttpResponse } from '../protocols/http-response';
 import { InputUpdatePokemon } from '../../business/dto/pokemon';
 import CannotUpdateFields from '../../business/errors/cannot-update-field';
 import UpdatePokemonInteractor from '../../business/interactors/pokemon/update-pokemon-interactor';

@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "CommonJS",
-    "lib": [
-      "ESNext"
-    ],
+    "module": "ES2022",
+    "lib": ["es6"],
     "allowJs": false,
     "importHelpers": true,
     "outDir": "build",
     "moduleResolution": "node",
     "types": [
-      "jest"
+      "jest",
+      "reflect-metadata"
     ],
+    "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "strict": true,
@@ -20,6 +20,9 @@
     "strictPropertyInitialization": false,
     "emitDecoratorMetadata": true,
     "sourceMap": true  
+  },
+  "tsc-alias": {
+    "resolveFullPaths": true,
   },
   "include": [
     "src",

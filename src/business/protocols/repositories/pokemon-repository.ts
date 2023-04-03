@@ -1,6 +1,6 @@
 import { Pokemon, PokemonWithId } from '../../../domain/entities/pokemon';
 
-export const PokemonRepositorySymbol = Symbol('PokemonRepository');
+export const PokemonRepositorySymbol = Symbol.for('PokemonRepository');
 
 export interface PokemonRepository {
   save(pokemon: Pokemon): Promise<PokemonWithId>;

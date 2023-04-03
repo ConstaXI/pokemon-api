@@ -1,4 +1,4 @@
-import { HttpResponse } from '../../main/protocols/http-response';
+import { HttpResponse } from '../protocols/http-response';
 import { Ok, ok } from '../../domain/protocols/result';
 import HttpError from '../../domain/protocols/http-error';
 

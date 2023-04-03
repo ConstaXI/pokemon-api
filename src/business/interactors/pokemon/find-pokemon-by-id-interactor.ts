@@ -1,5 +1,5 @@
 import { inject, injectable } from 'inversify';
-import { Pokemon, PokemonWithId } from '../../../domain/entities/pokemon';
+import { PokemonWithId } from '../../../domain/entities/pokemon';
 import { Interactor } from '../../../domain/protocols/interactor';
 import { Result, fail, ok } from '../../../domain/protocols/result';
 import PokemonNotFound from '../../errors/pokemon-not-found';

@@ -1,9 +1,9 @@
 import { inject, injectable } from 'inversify';
 import CreatePokemonInteractor from '../../business/interactors/pokemon/create-pokemon-interactor';
-import Controller from '../../main/protocols/controller';
+import Controller from '../protocols/controller';
 import { Pokemon } from '../../domain/entities/pokemon';
 import { Result, fail } from '../../domain/protocols/result';
-import { HttpResponse } from '../../main/protocols/http-response';
+import { HttpResponse } from '../protocols/http-response';
 import { InputCreatePokemon } from '../../business/dto/pokemon';
 import httpOk from '../responses/http-ok';
 import InvalidPokemon from '../../business/errors/invalid-pokemon';
