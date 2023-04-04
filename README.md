@@ -1,6 +1,6 @@
 # pokemon-api
 
-API feita para processo seletivo da Jazida. 
+API feita para um processo seletivo.
 
 Desenvolvida seguindo os padrões do Clean Architecture, proporcionando alta escalabilidade e legibilidade. Destaca-se também o uso de testes unitários e de integração, trazendo segurança no desenvolvimento, tanto no sentido de evitar bugs quanto no sentido de garantir a execuçãod as regras de negócio.
 
