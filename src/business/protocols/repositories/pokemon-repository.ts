@@ -8,5 +8,6 @@ export interface PokemonRepository {
     key: keyof PokemonWithId,
     value: PokemonWithId[keyof PokemonWithId],
   ): Promise<PokemonWithId | undefined>;
+  find(): Promise<PokemonWithId[]>;
   delete(id: PokemonWithId['id']): Promise<void>;
 }

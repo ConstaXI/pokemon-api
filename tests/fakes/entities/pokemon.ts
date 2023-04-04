@@ -1,7 +1,7 @@
-import { Pokemon, PokemonWithId } from '../../../src/domain/entities/pokemon';
+import { PokemonWithId } from '../../../src/domain/entities/pokemon';
 
 export default function makeFakePokemon(
-  properties?: Partial<Pokemon>,
+  properties?: Partial<PokemonWithId>,
 ): PokemonWithId {
   return {
     id: 1,
