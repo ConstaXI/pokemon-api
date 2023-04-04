@@ -1,6 +1,7 @@
 import 'reflect-metadata';
+import 'dotenv/config';
 
-process.env.DATABASE_NAME = 'pokemon_test';
+process.env.DATABASE_NAME = process.env.INTEGRATION_TEST_DATABASE_NAME || 'pokemon_test';
 
 const postgresDataSource = (await import('./src/infra/database/datasource')).default
 
