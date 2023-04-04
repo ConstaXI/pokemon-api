@@ -1,7 +1,7 @@
 import DeletePokemonInteractor from '../../src/business/interactors/pokemon/delete-pokemon-interactor';
 import { PokemonRepositorySymbol } from '../../src/business/protocols/repositories/pokemon-repository';
 import container from '../../src/main/ioc/container';
-import makeFakePokemonWithId from '../fakes/entities/pokemon';
+import { makeFakePokemonWithId } from '../fakes/entities/pokemon';
 import FakePokemonRepository, {
   fakePokemonRepositoryDelete,
 } from '../fakes/repositories/pokemon-repository';

@@ -1,11 +1,9 @@
-import InvalidPokemon from '../../src/business/errors/invalid-pokemon';
 import PokemonNotFound from '../../src/business/errors/pokemon-not-found';
 import FindPokemonByIdInteractor from '../../src/business/interactors/pokemon/find-pokemon-by-id-interactor';
 import { PokemonRepositorySymbol } from '../../src/business/protocols/repositories/pokemon-repository';
 import container from '../../src/main/ioc/container';
 import FakePokemonRepository, {
   fakePokemonRepositoryFindOne,
-  fakePokemonRepositorySave,
 } from '../fakes/repositories/pokemon-repository';
 
 describe('FindPokemonByIdInteractor', () => {

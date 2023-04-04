@@ -3,7 +3,7 @@ import CreatePokemonInteractor from '../../src/business/interactors/pokemon/crea
 import { PokemonRepositorySymbol } from '../../src/business/protocols/repositories/pokemon-repository';
 import { PokemonTypes } from '../../src/domain/entities/pokemon';
 import container from '../../src/main/ioc/container';
-import makeFakePokemonWithId from '../fakes/entities/pokemon';
+import { makeFakePokemonWithId } from '../fakes/entities/pokemon';
 import FakePokemonRepository, {
   fakePokemonRepositorySave,
 } from '../fakes/repositories/pokemon-repository';

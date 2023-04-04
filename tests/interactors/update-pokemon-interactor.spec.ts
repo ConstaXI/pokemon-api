@@ -1,7 +1,7 @@
 import UpdatePokemonInteractor from '../../src/business/interactors/pokemon/update-pokemon-interactor';
 import { PokemonRepositorySymbol } from '../../src/business/protocols/repositories/pokemon-repository';
 import container from '../../src/main/ioc/container';
-import makeFakePokemonWithId from '../fakes/entities/pokemon';
+import { makeFakePokemonWithId } from '../fakes/entities/pokemon';
 import FakePokemonRepository, {
   fakePokemonRepositorySave,
 } from '../fakes/repositories/pokemon-repository';
