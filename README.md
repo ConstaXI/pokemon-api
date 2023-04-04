@@ -29,7 +29,13 @@ Com tudo pronto, basta executar no terminal:
 npm install
 ```
 
-e depois
+e depois, para rodar as migrations (requer o banco já criado)
+
+```console
+npm run migrations:run
+```
+
+finalmente
 
 ```console
 npm run start
