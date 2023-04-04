@@ -6,6 +6,7 @@ import HttpError from '../../domain/protocols/http-error';
 import { Result, fail } from '../../domain/protocols/result';
 import { HttpResponse } from '../protocols/http-response';
 import httpOk from '../responses/http-ok';
+import IdMustBeANumber from '../../business/errors/id-must-be-a-number';
 
 @injectable()
 export default class FindPokemonByIdController
@@ -17,9 +18,15 @@ export default class FindPokemonByIdController
   ) {}
 
   async handle(request: {
-    id: PokemonWithId['id'];
+    id: string;
   }): Promise<Result<HttpResponse<PokemonWithId>, HttpError>> {
-    const pokemon = await this.findPokemonByIdInteractor.execute(request.id);
+    const id = Number(request.id);
+
+    if (Number.isNaN(id)) {
+      return fail(new IdMustBeANumber());
+    }
+
+    const pokemon = await this.findPokemonByIdInteractor.execute(id);
 
     if (pokemon.isFail()) {
       return fail(pokemon.value);

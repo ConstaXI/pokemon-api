@@ -8,6 +8,7 @@ import CannotUpdateFields from '../../business/errors/cannot-update-field';
 import UpdatePokemonInteractor from '../../business/interactors/pokemon/update-pokemon-interactor';
 import FindPokemonByIdInteractor from '../../business/interactors/pokemon/find-pokemon-by-id-interactor';
 import httpNoContent from '../responses/http-no-content';
+import IdMustBeANumber from '../../business/errors/id-must-be-a-number';
 
 @injectable()
 export default class UpdatePokemonController
@@ -21,7 +22,7 @@ export default class UpdatePokemonController
   ) {}
 
   async handle(
-    request: InputUpdatePokemon & { id: PokemonWithId['id'] },
+    request: InputUpdatePokemon & { id: string },
   ): Promise<Result<HttpResponse<null>, CannotUpdateFields>> {
     const requestKeys = Object.keys(request);
 
@@ -31,7 +32,13 @@ export default class UpdatePokemonController
       }
     }
 
-    const pokemon = await this.findPokemonByIdInteractor.execute(request.id);
+    const id = Number(request.id);
+
+    if (Number.isNaN(id)) {
+      return fail(new IdMustBeANumber());
+    }
+
+    const pokemon = await this.findPokemonByIdInteractor.execute(id);
 
     if (pokemon.isFail()) {
       return fail(pokemon.value);
