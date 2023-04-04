@@ -26,6 +26,7 @@
     "sonarjs"
   ],
   "rules": {
+    "no-restricted-syntax": "off",
     "unicorn/no-useless-undefined": "off",
     "import/no-unresolved": "off",
     "import/extensions": "off",

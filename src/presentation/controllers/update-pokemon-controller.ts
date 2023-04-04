@@ -23,6 +23,14 @@ export default class UpdatePokemonController
   async handle(
     request: InputUpdatePokemon & { id: PokemonWithId['id'] },
   ): Promise<Result<HttpResponse<null>, CannotUpdateFields>> {
+    const requestKeys = Object.keys(request);
+
+    for (const requestKey of requestKeys) {
+      if (requestKey !== 'id' && requestKey !== 'treinador') {
+        return fail(new CannotUpdateFields());
+      }
+    }
+
     const pokemon = await this.findPokemonByIdInteractor.execute(request.id);
 
     if (pokemon.isFail()) {
