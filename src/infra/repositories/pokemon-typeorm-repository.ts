@@ -13,7 +13,7 @@ export default class PokemonTypeormRepository implements PokemonRepository {
     return repository.find();
   }
 
-  async save(pokemon: Pokemon): Promise<PokemonWithId> {
+  async save(pokemon: Pokemon | PokemonWithId): Promise<PokemonWithId> {
     const repository = postgresDataSource.getRepository(PokemonEntity);
 
     return repository.save(pokemon);
@@ -25,7 +25,9 @@ export default class PokemonTypeormRepository implements PokemonRepository {
   ): Promise<PokemonWithId | undefined> {
     const repository = postgresDataSource.getRepository(PokemonEntity);
 
-    const fromPersistence = await repository.findOne({ [key]: value });
+    const fromPersistence = await repository.findOne({
+      where: { [key]: value },
+    });
 
     if (!fromPersistence) {
       return undefined;

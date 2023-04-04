@@ -3,7 +3,7 @@ import { Pokemon, PokemonWithId } from '../../../domain/entities/pokemon';
 export const PokemonRepositorySymbol = Symbol.for('PokemonRepository');
 
 export interface PokemonRepository {
-  save(pokemon: Pokemon): Promise<PokemonWithId>;
+  save(pokemon: Pokemon | PokemonWithId): Promise<PokemonWithId>;
   findOne(
     key: keyof PokemonWithId,
     value: PokemonWithId[keyof PokemonWithId],

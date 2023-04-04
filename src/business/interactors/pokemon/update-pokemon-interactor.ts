@@ -21,7 +21,7 @@ export default class UpdatePokemonInteractor
     pokemon: PokemonWithId,
     treinador: string,
   ): Promise<Result<PokemonWithId, CannotUpdateFields>> {
-    const updated = {
+    const updated: PokemonWithId = {
       ...pokemon,
       treinador,
     };

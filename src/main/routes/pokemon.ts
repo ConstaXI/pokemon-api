@@ -7,17 +7,17 @@ import FindPokemonByIdController from '../../presentation/controllers/find-pokem
 
 export default (router: Router): void => {
   router.post(
-    '/pokemon',
+    '/pokemons',
     expressAdapter(container.get(CreatePokemonController)),
   );
 
   router.put(
-    '/pokemon/:id',
+    '/pokemons/:id',
     expressAdapter(container.get(UpdatePokemonController)),
   );
 
   router.get(
-    '/pokemon/:id',
+    '/pokemons/:id',
     expressAdapter(container.get(FindPokemonByIdController)),
   );
 };

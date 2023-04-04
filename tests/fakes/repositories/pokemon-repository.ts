@@ -1,12 +1,12 @@
 import { injectable } from 'inversify';
 import { PokemonRepository } from '../../../src/business/protocols/repositories/pokemon-repository';
 import { Pokemon, PokemonWithId } from '../../../src/domain/entities/pokemon';
-import makeFakePokemon from '../entities/pokemon';
+import { makeFakePokemonWithId } from '../entities/pokemon';
 
 @injectable()
 export default class FakePokemonRepository implements PokemonRepository {
   async find(): Promise<PokemonWithId[]> {
-    return [makeFakePokemon({ id: 1 }), makeFakePokemon({ id: 2 })];
+    return [makeFakePokemonWithId({ id: 1 }), makeFakePokemonWithId({ id: 2 })];
   }
 
   async delete(id: number): Promise<void> {
@@ -14,14 +14,14 @@ export default class FakePokemonRepository implements PokemonRepository {
   }
 
   async save(pokemon: Pokemon): Promise<PokemonWithId> {
-    return makeFakePokemon();
+    return makeFakePokemonWithId();
   }
 
   async findOne(
     key: keyof PokemonWithId,
     value: string | number,
   ): Promise<PokemonWithId | undefined> {
-    return makeFakePokemon();
+    return makeFakePokemonWithId();
   }
 }
 

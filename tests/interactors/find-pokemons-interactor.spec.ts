@@ -1,7 +1,7 @@
 import FindPokemonsInteractor from '../../src/business/interactors/pokemon/find-pokemons-interactor';
 import { PokemonRepositorySymbol } from '../../src/business/protocols/repositories/pokemon-repository';
 import container from '../../src/main/ioc/container';
-import makeFakePokemon from '../fakes/entities/pokemon';
+import makeFakePokemonWithId from '../fakes/entities/pokemon';
 import FakePokemonRepository, {
   fakePokemonRepositoryFind,
 } from '../fakes/repositories/pokemon-repository';
@@ -29,7 +29,10 @@ describe('FindPokemonsInteractor', () => {
   });
 
   test('should return a list of pokemons', async () => {
-    const pokemons = [makeFakePokemon({ id: 1 }), makeFakePokemon({ id: 2 })];
+    const pokemons = [
+      makeFakePokemonWithId({ id: 1 }),
+      makeFakePokemonWithId({ id: 2 }),
+    ];
     fakePokemonRepositoryFind.mockResolvedValueOnce(pokemons);
     const result = await interactor.execute();
 
