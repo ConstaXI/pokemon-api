@@ -16,7 +16,7 @@ export default class UpdatePokemonController
   constructor(
     @inject(FindPokemonByIdInteractor)
     private readonly findPokemonByIdInteractor: FindPokemonByIdInteractor,
-    @inject(UpdatePokemonController)
+    @inject(UpdatePokemonInteractor)
     private readonly updatePokemonInteractor: UpdatePokemonInteractor,
   ) {}
 
