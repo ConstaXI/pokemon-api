@@ -56,14 +56,14 @@ export default (router: Router): void => {
 
   /**
    * @openapi
-   * '/pokemons/:id':
+   * '/pokemons/{id}':
    *  put:
    *     tags:
    *     - Pokemon
    *     summary: Updates existing Pokemon
    *     parameters:
-   *       - in: path
-   *         name: id
+   *       - name: id
+   *         in: path
    *         description: Pokemon id
    *         required: true
    *     requestBody:
@@ -90,14 +90,14 @@ export default (router: Router): void => {
 
   /**
    * @openapi
-   * '/pokemons/:id':
+   * '/pokemons/{id}':
    *  get:
    *     tags:
    *     - Pokemon
    *     summary: Find a single existing Pokemon
    *     parameters:
-   *       - in: path
-   *         name: id
+   *       - name: id
+   *         in: path
    *         description: Pokemon id
    *         required: true
    *     responses:
@@ -148,14 +148,14 @@ export default (router: Router): void => {
 
   /**
    * @openapi
-   * '/pokemons/:id':
+   * '/pokemons/{id}':
    *  delete:
    *     tags:
    *     - Pokemon
    *     summary: Deletes a Pokemon
    *     parameters:
-   *       - in: path
-   *         name: id
+   *       - name: id
+   *         in: path
    *         description: Pokemon id
    *         required: true
    *     responses:
@@ -173,18 +173,18 @@ export default (router: Router): void => {
 
   /**
    * @openapi
-   * '/batalhar/:pokemonAId/:pokemonBId':
+   * '/batalhar/{pokemonAId}/{pokemonBId}':
    *  post:
    *     tags:
    *     - Pokemon
    *     summary: Deletes a Pokemon
    *     parameters:
-   *       - in: path
-   *         name: pokemonAId
+   *       - name: pokemonAId
+   *         in: path
    *         description: Id of the first Pokemon
    *         required: true
-   *       - in: path
-   *         name: pokemonBId
+   *       - name: pokemonBId
+   *         in: path
    *         description: Id of the second Pokemon
    *         required: true
    *     responses:
