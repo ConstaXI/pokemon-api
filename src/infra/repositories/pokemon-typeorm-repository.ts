@@ -7,6 +7,12 @@ import postgresDataSource from '../database/datasource';
 
 @injectable()
 export default class PokemonTypeormRepository implements PokemonRepository {
+  async find(): Promise<PokemonWithId[]> {
+    const repository = postgresDataSource.getRepository(PokemonEntity);
+
+    return repository.find();
+  }
+
   async save(pokemon: Pokemon): Promise<PokemonWithId> {
     const repository = postgresDataSource.getRepository(PokemonEntity);
 

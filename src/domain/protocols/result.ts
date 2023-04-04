@@ -34,10 +34,10 @@ export class Ok<O, F> {
 
 export type Result<O, F> = Fail<O, F> | Ok<O, F>;
 
-export const fail = <O, F>(value: F): Result<O, F> => {
+export const fail = <F>(value: F): Fail<never, F> => {
   return new Fail(value);
 };
 
-export const ok = <O, F>(value: O): Result<O, F> => {
-  return new Ok<O, F>(value);
+export const ok = <O>(value: O): Ok<O, never> => {
+  return new Ok(value);
 };
