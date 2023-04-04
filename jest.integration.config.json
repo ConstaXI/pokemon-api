@@ -1,0 +1,18 @@
+{
+  "roots": ["<rootDir>/tests"],
+  "testEnvironment": "node",
+  "collectCoverageFrom": ["<rootDir>/src/**/*.ts"],
+  "coverageReporters": ["text", "lcov"],
+  "coverageDirectory": "coverage",
+  "testMatch": ["**/tests/**/*.test.ts"],
+  "clearMocks": true,
+  "verbose": true,
+  "setupFilesAfterEnv": ["<rootDir>/jest.integration.setup.ts"],
+  "preset": "ts-jest/presets/default-esm",
+  "moduleNameMapper": {
+    "^src/(.*)": "<rootDir>/src/$1"
+  },
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "extensionsToTreatAsEsm": [".ts"],
+  "moduleDirectories": ["node_modules", "src"]
+}

@@ -8,10 +8,8 @@
     "migrations:run": "typeorm-ts-node-esm migration:run -d ./src/infra/database/datasource.ts",
     "start": "ts-node-esm -r tsconfig-paths/register src/main/server.ts",
     "build": "tsc -p ./tsconfig.build.json && tsc-alias -p ./tsconfig.build.json",
-    "test": "jest --runInBand --silent --detectOpenHandles",
-    "test:verbose": "jest --runInBand",
-    "test:watch": "npm run test -- --watch",
-    "test:ci": "npm run test -- --coverage"
+    "test:unit": "jest --runInBand --silent --detectOpenHandles --config ./jest.unit.config.ts",
+    "test:integration": "node --experimental-vm-modules -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand --detectOpenHandles --config ./jest.integration.config.json"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -30,6 +28,7 @@
     "@types/express": "^4.17.17",
     "@types/jest": "^29.5.0",
     "@types/node": "^18.15.11",
+    "@types/supertest": "^2.0.12",
     "eslint": "^8.37.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -43,6 +42,7 @@
     "eslint-plugin-unicorn": "^46.0.0",
     "jest": "^29.5.0",
     "prettier": "^2.8.3",
+    "supertest": "^6.3.3",
     "ts-jest": "^29.1.0",
     "ts-node-dev": "^2.0.0",
     "tsc-watch": "^6.0.0",

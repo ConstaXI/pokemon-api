@@ -7,13 +7,10 @@ const config: Config = {
   collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
   coverageReporters: ['text', 'lcov'],
   coverageDirectory: 'coverage',
-  testMatch: ['**/tests/**/*.spec.ts', '!**/tests/infra/**/*.spec.ts'],
+  testMatch: ['**/tests/**/*.spec.ts'],
   clearMocks: true,
   verbose: true,
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  transform: {
-    '.+\\.ts$': 'ts-jest',
-  },
+  setupFilesAfterEnv: ['<rootDir>/jest.unit.setup.ts'],
   moduleDirectories: ['node_modules', 'src'],
 };
 

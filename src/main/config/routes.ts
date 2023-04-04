@@ -11,9 +11,7 @@ export default async (app: Express): Promise<void> => {
 
   const files = readdirSync(`${path}/../routes`);
 
-  const fileWithRoutes = files.filter(file => file.endsWith('.js'));
-
-  const promises = fileWithRoutes.map(async file => {
+  const promises = files.map(async file => {
     const { default: route } = await import(`../routes/${file}`);
 
     route(router);

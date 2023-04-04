@@ -4,21 +4,28 @@ import Controller from '../../presentation/protocols/controller';
 const expressAdapter =
   (controller: Controller<unknown>) =>
   async (request: Request, response: Response) => {
-    const input = {
-      ...request.body,
-      ...request.params,
-      ...request.query,
-    };
+    try {
+      const input = {
+        ...request.body,
+        ...request.params,
+        ...request.query,
+      };
 
-    const output = await controller.handle(input);
+      const output = await controller.handle(input);
 
-    if (output.isFail()) {
+      if (output.isFail()) {
+        return response
+          .status(output.value.statusCode)
+          .json({ message: output.value.message });
+      }
+
+      return response.status(output.value.statusCode).json(output.value.body);
+    } catch (error) {
+      console.error(error);
       return response
-        .status(output.value.statusCode)
-        .json({ message: output.value.message });
+        .status(500)
+        .json({ message: 'Um erro inesperado aconteceu' });
     }
-
-    return response.status(output.value.statusCode).json(output.value.body);
   };
 
 export default expressAdapter;
