@@ -1,7 +1,13 @@
 import PokemonBattleInteractor from '../../src/business/interactors/battle/pokemon-battle-interactor';
+import { PokemonRepositorySymbol } from '../../src/business/protocols/repositories/pokemon-repository';
 import { BooleanGeneratorSymbol } from '../../src/business/protocols/services/boolean-generator';
 import container from '../../src/main/ioc/container';
 import { makeFakePokemonWithId } from '../fakes/entities/pokemon';
+import FakePokemonRepository, {
+  fakePokemonRepositoryDelete,
+  fakePokemonRepositorySave,
+  fakePokemonRepositorySaveMany,
+} from '../fakes/repositories/pokemon-repository';
 import FakeBooleanGenerator, {
   fakeBooleanGeneratorGenerate,
 } from '../fakes/services/fake-boolean-generator';
@@ -11,6 +17,7 @@ describe('PokemonBattleInteractor', () => {
 
   beforeAll(() => {
     container.bind(BooleanGeneratorSymbol).to(FakeBooleanGenerator);
+    container.bind(PokemonRepositorySymbol).to(FakePokemonRepository);
     container.bind(PokemonBattleInteractor).toSelf();
   });
 
@@ -82,5 +89,31 @@ describe('PokemonBattleInteractor', () => {
       expect(result.value.vencedor.nivel).toBe(pokemonANivel + 1);
       expect(result.value.perdedor.nivel).toBe(pokemonBNivel - 1);
     }
+  });
+
+  test('Should save both pokemon if their nivel is higher than 0', async () => {
+    const pokemonA = makeFakePokemonWithId({ id: 1, nivel: 2 });
+    const pokemonB = makeFakePokemonWithId({ id: 2, nivel: 2 });
+
+    fakeBooleanGeneratorGenerate.mockReturnValueOnce(true);
+
+    const result = await interactor.execute(pokemonA, pokemonB);
+
+    expect(result.isOk()).toBeTruthy();
+    expect(fakePokemonRepositorySaveMany).toHaveBeenCalled();
+  });
+
+  test('Should delete perdedor if its nivel is lower than 1', async () => {
+    const pokemonA = makeFakePokemonWithId({ id: 1, nivel: 1 });
+    const pokemonB = makeFakePokemonWithId({ id: 2, nivel: 1 });
+
+    fakeBooleanGeneratorGenerate.mockReturnValueOnce(true);
+
+    const result = await interactor.execute(pokemonA, pokemonB);
+
+    expect(result.isOk()).toBeTruthy();
+    expect(fakePokemonRepositorySaveMany).not.toHaveBeenCalled();
+    expect(fakePokemonRepositorySave).toHaveBeenCalled();
+    expect(fakePokemonRepositoryDelete).toHaveBeenCalled();
   });
 });

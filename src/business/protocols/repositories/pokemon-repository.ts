@@ -4,6 +4,7 @@ export const PokemonRepositorySymbol = Symbol.for('PokemonRepository');
 
 export interface PokemonRepository {
   save(pokemon: Pokemon | PokemonWithId): Promise<PokemonWithId>;
+  saveMany(pokemons: PokemonWithId[]): Promise<PokemonWithId[]>;
   findOne(
     key: keyof PokemonWithId,
     value: PokemonWithId[keyof PokemonWithId],

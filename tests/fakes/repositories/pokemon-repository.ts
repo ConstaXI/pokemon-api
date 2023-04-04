@@ -5,6 +5,10 @@ import { makeFakePokemonWithId } from '../entities/pokemon';
 
 @injectable()
 export default class FakePokemonRepository implements PokemonRepository {
+  async saveMany(pokemons: PokemonWithId[]): Promise<PokemonWithId[]> {
+    return [makeFakePokemonWithId({ id: 1 }), makeFakePokemonWithId({ id: 2 })];
+  }
+
   async find(): Promise<PokemonWithId[]> {
     return [makeFakePokemonWithId({ id: 1 }), makeFakePokemonWithId({ id: 2 })];
   }
@@ -38,6 +42,11 @@ export const fakePokemonRepositoryFindOne = jest.spyOn(
 export const fakePokemonRepositoryFind = jest.spyOn(
   FakePokemonRepository.prototype,
   'find',
+);
+
+export const fakePokemonRepositorySaveMany = jest.spyOn(
+  FakePokemonRepository.prototype,
+  'saveMany',
 );
 
 export const fakePokemonRepositoryDelete = jest.spyOn(

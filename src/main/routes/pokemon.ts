@@ -7,6 +7,7 @@ import UpdatePokemonController from '../../presentation/controllers/update-pokem
 import FindPokemonByIdController from '../../presentation/controllers/find-pokemon-by-id-controller';
 import FindPokemonsController from '../../presentation/controllers/find-pokemons-controller';
 import DeletePokemonController from '../../presentation/controllers/delete-pokemon-controller';
+import PokemonBattleController from '../../presentation/controllers/pokemon-battle-controller';
 
 export default (router: Router): void => {
   router.post(
@@ -32,5 +33,10 @@ export default (router: Router): void => {
   router.delete(
     '/pokemons/:id',
     expressAdapter(container.get(DeletePokemonController)),
+  );
+
+  router.post(
+    '/batalhar/:pokemonAId/:pokemonBId',
+    expressAdapter(container.get(PokemonBattleController)),
   );
 };

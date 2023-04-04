@@ -7,6 +7,10 @@ import { BattleResult } from '../../dto/battle';
 import BooleanGenerator, {
   BooleanGeneratorSymbol,
 } from '../../protocols/services/boolean-generator';
+import {
+  PokemonRepository,
+  PokemonRepositorySymbol,
+} from '../../protocols/repositories/pokemon-repository';
 
 @injectable()
 export default class PokemonBattleInteractor
@@ -15,6 +19,8 @@ export default class PokemonBattleInteractor
   constructor(
     @inject(BooleanGeneratorSymbol)
     private readonly booleanGenerator: BooleanGenerator,
+    @inject(PokemonRepositorySymbol)
+    private readonly pokemonRepository: PokemonRepository,
   ) {}
 
   async execute(
@@ -36,7 +42,15 @@ export default class PokemonBattleInteractor
     vencedorAndPerdedor.vencedor.nivel += 1;
     vencedorAndPerdedor.perdedor.nivel -= 1;
 
-    console.log(vencedorAndPerdedor);
+    if (vencedorAndPerdedor.perdedor.nivel <= 0) {
+      await this.pokemonRepository.delete(vencedorAndPerdedor.perdedor.id);
+      await this.pokemonRepository.save(vencedorAndPerdedor.vencedor);
+    } else {
+      await this.pokemonRepository.saveMany([
+        vencedorAndPerdedor.vencedor,
+        vencedorAndPerdedor.perdedor,
+      ]);
+    }
 
     return ok(vencedorAndPerdedor);
   }
